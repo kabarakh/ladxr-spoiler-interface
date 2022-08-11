@@ -4,6 +4,7 @@ import ItemsView from "@/views/ItemsView.vue";
 import LocationsView from "@/views/LocationsView.vue";
 import SettingsView from "@/views/SettingsView.vue";
 import EntranceShuffleView from "@/views/EntranceShuffleView.vue";
+import ImprintView from "@/views/ImprintView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,9 +30,14 @@ const router = createRouter({
       component: SettingsView,
     },
     {
-      path: "/entances",
+      path: "/entrances",
       name: "entrances",
-      component:EntranceShuffleView,
+      component: EntranceShuffleView,
+    },
+    {
+      path: "/imprint",
+      name: "imprint",
+      component: ImprintView,
     },
   ],
 });

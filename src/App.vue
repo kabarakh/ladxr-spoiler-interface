@@ -27,6 +27,7 @@ header {
       <RouterLink v-if="dataStorage.getSeed" to="/locations">Locations view</RouterLink>
       <RouterLink v-if="dataStorage.getSeed && dataStorage.getAllEntrances.length" to="/entrances">Entrances view</RouterLink>
       <RouterLink v-if="dataStorage.getSeed" to="/settings">Verify settings</RouterLink>
+      <RouterLink to="/imprint">Imprint</RouterLink>
     </nav>
     <div>Current seed: {{ dataStorage.getSeed || "-" }}</div>
   </header>

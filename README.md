@@ -27,3 +27,5 @@ I know, I could also do issues/tasks in Github. But just to make it more visible
 That way you can basically make up a route
 
 [ ] Entrance list for entrance shuffle/dungeon shuffle/random starting location seeds
+
+[ ] Automatically run the deploy script to update the website on push on `main` branch

@@ -13,7 +13,7 @@ const scrollToArea = (area: string) => {
 };
 
 const generateIdFromArea = (area: string): string => {
-  return area.replace(/[' ]/, '_').toLowerCase();
+  return area.replace(/[' ]/g, '_').toLowerCase();
 };
 
 const areas = store.getAllAreas;

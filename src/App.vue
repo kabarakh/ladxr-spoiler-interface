@@ -34,4 +34,7 @@ header {
   <main>
     <RouterView />
   </main>
+  <footer>
+    <a href="https://kabarakh.github.io/ladxr-spoiler-interface/">Fork/View/Star on Github</a>
+  </footer>
 </template>

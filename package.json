@@ -8,7 +8,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "deploy": "build && gh-pages -d dist"
+    "deploy": "npm run build-only && gh-pages -d dist"
   },
   "dependencies": {
     "@vueuse/core": "^9.1.0",

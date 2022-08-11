@@ -1,46 +1,29 @@
-# ladxr-web-tracker
+# LADXR Spoiler Interface
 
-This template should help get you started developing with Vue 3 in Vite.
+## What is this? 
 
-## Recommended IDE Setup
+So you might have heard of game randomizers. And you might have heard of Legend of Zelda Link's Awakening. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+If both, you might want to check out [LADXR](http://ladxr.daid.eu/), a randomizer for Link's Awakening.
 
-## Type Support for `.vue` Imports in TS
+When you create a ROM, you can also create a spoiler log. This can be in JSON - and this JSON can be read by
+LADXR Spoiler Interface!
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Installation
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Just clone the repo, `npm install` everything and `npm run dev` to start the development version.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Website
 
-## Customize configuration
+There is an online version available: https://kabarakh.github.io/ladxr-spoiler-interface/
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## TODOs
 
-## Project Setup
+I know, I could also do issues/tasks in Github. But just to make it more visible, some TODOs I still want to implement:
 
-```sh
-npm install
-```
+[ ] Display non-accessible items/locations in a different style
 
-### Compile and Hot-Reload for Development
+[ ] Implement a "sphere slider" (0 to highest sphere) and highlight items/locations available in the selected sphere.
+That way you can basically make up a route
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+[ ] Entrance list for entrance shuffle/dungeon shuffle/random starting location seeds

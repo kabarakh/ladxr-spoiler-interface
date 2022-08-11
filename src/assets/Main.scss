@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #303040;
+  color: #EEEEEE;
+
+  font-family: sans-serif;
+}
+
+a {
+  color: #DD5050;
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+    color: #FF6060;
+  }
+
+}
+
+header,
+main {
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+}

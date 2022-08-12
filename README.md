@@ -28,3 +28,4 @@ That way you can basically make up a route
 - [ ] Automatically run the deploy script to update the website on push on `main` branch
 - [ ] Style that thing
 - [ ] Map view of locations/Inventory view of items
+- [ ] Validate the uploaded JSON file against a schema file

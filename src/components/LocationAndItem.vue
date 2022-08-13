@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useDataStore } from "@/stores/data";
 import { ref } from "vue";
+import { useUserSettingsStore } from '@/stores/userSettings';
 
 const props = defineProps(['location'])
 
-const store = useDataStore();
-const item = store.getItemByIdentifier(props.location.itemIdentifier);
 const displayItem = ref(false);
 
 const toggleDisplay = () => {
   displayItem.value = !displayItem.value;
 };
+
+const userSettingsStore = useUserSettingsStore();
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +23,10 @@ div {
 
 <template>
   <div>
-    <span @click="toggleDisplay">{{location.name}}</span>
-    <span v-if="displayItem">{{item.name}}</span>
+    <span :class="{
+      'not-accessible': userSettingsStore.markNonAccessible && !location.accessible,
+      'not-in-sphere': userSettingsStore.markSphereItems && (location.sphere > userSettingsStore.sphere || location.sphere === null)
+    }" @click="toggleDisplay">{{location.name}}</span>
+    <span v-if="displayItem">{{location.getItem().name}}</span>
   </div>
 </template>

@@ -21,8 +21,8 @@ There is an online version available: https://kabarakh.github.io/ladxr-spoiler-i
 
 I know, I could also do issues/tasks in Github. But just to make it more visible, some TODOs I still want to implement:
 
-- [ ] Display non-accessible items/locations in a different style
-- [ ] Implement a "sphere slider" (0 to highest sphere) and highlight items/locations available in the selected sphere.
+- [X] Display non-accessible items/locations in a different style
+- [X] Implement a "sphere slider" (0 to highest sphere) and highlight items/locations available in the selected sphere.
 That way you can basically make up a route
 - [ ] Entrance list for entrance shuffle/dungeon shuffle/random starting location seeds
 - [ ] Automatically run the deploy script to update the website on push on `main` branch

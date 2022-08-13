@@ -5,7 +5,7 @@ import { useDataStore } from "@/stores/data";
 import router from "@/router";
 
 const store = useDataStore();
-if (!store.getSeed) {
+if (!store.seed) {
   router.push('/');
 }
 

@@ -4,7 +4,7 @@ import router from "@/router";
 import LocationListPerArea from "@/components/LocationListPerArea.vue";
 
 const store = useDataStore();
-if (!store.getSeed) {
+if (!store.seed) {
   router.push('/');
 }
 

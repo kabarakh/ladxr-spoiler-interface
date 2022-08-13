@@ -3,11 +3,11 @@ import { useDataStore } from "@/stores/data";
 import router from "@/router";
 
 const store = useDataStore();
-if (!store.getSeed) {
+if (!store.seed) {
   router.push('/');
 }
 
-const options = store.getOptions;
+const options = store.options;
 </script>
 
 <template>

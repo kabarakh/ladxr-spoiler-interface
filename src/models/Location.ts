@@ -12,7 +12,7 @@ interface ConstructorArgument {
 }
 
 export class Location {
-  private readonly _id: number;
+  private readonly _id: string;
   private readonly _name: string;
   private readonly _area: string;
   private readonly _itemIdentifier: string;
@@ -20,7 +20,7 @@ export class Location {
   private readonly _accessible: boolean;
 
   constructor({id, area, sphere, itemName, locationName}: ConstructorArgument, accessible: boolean) {
-    this._id = parseInt(id, 16);
+    this._id = id;
     this._area = area;
     this._sphere = sphere;
     this._itemIdentifier = itemName;
@@ -32,7 +32,7 @@ export class Location {
     return useDataStore().getItemByIdentifier(this._itemIdentifier) as Item;
   }
 
-  get id(): number {
+  get id(): string {
     return this._id;
   }
 

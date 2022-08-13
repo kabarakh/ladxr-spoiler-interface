@@ -12,7 +12,7 @@ interface JsonData {
 }
 
 export const useDataStore = defineStore({
-  id: "ladxr",
+  id: "ladxr-data",
   state: () => {
     return {
       locations: [] as Location[],
@@ -23,7 +23,6 @@ export const useDataStore = defineStore({
     };
   },
   getters: {
-    getAllLocations: (state): Location[] => state.locations,
     getLocationById: (state) => {
       return (locationId: number) => state.locations.find((location: Location) => location.id === locationId);
     },
@@ -39,16 +38,12 @@ export const useDataStore = defineStore({
       });
       return areas;
     },
-    getAllItems: (state): Item[] => state.items,
     getItemByIdentifier: (state) => {
       return (itemIdentifier: string) => state.items.find((item: Item) => item.identifier === itemIdentifier);
     },
     getItemsByCategory: (state) => {
       return (category: CATEGORIES) => state.items.filter((item: Item) => item.category === category);
     },
-    getAllEntrances: (state): [] => state.entrances,
-    getOptions: (state): Options => state.options,
-    getSeed: (state): string => state.seed,
   },
   actions: {
     generateStore(jsonData: JsonData) {

@@ -40,6 +40,8 @@ enum ITEM_IDENTIFIER_TO_NAME {
   RUPEES_100 = "100 Rupees",
   RUPEES_50 = "50 Rupees",
   RUPEES_20 = "20 Rupees",
+  ARROWS_10 = "10 Arrows",
+  SINGLE_ARROW = "Single Arrow",
   SEASHELL = "Secret Seashell",
   MEDICINE = "Medicine",
   GEL = "Gel Trap",
@@ -111,6 +113,7 @@ enum ITEM_IDENTIFIER_TO_NAME {
   TRADING_ITEM_NECKLACE = "Necklace",
   TRADING_ITEM_SCALE = "Scale",
   TRADING_ITEM_MAGNIFYING_GLASS = "Magnifying Lens",
+  BAD_HEART_CONTAINER = "Bad Heart Container",
 }
 
 export enum CATEGORIES {
@@ -174,6 +177,8 @@ enum ITEM_TO_CATEGORY_MAP {
   RUPEES_100 = CATEGORIES.TRASH,
   RUPEES_50 = CATEGORIES.TRASH,
   RUPEES_20 = CATEGORIES.TRASH,
+  ARROWS_10 = CATEGORIES.TRASH,
+  SINGLE_ARROW = CATEGORIES.TRASH,
   SEASHELL = CATEGORIES.COLLECTIBLE,
   MEDICINE = CATEGORIES.PASSIVE,
   GEL = CATEGORIES.TRASH,
@@ -245,13 +250,14 @@ enum ITEM_TO_CATEGORY_MAP {
   TRADING_ITEM_NECKLACE = CATEGORIES.TRADING,
   TRADING_ITEM_SCALE = CATEGORIES.TRADING,
   TRADING_ITEM_MAGNIFYING_GLASS = CATEGORIES.TRADING,
+  BAD_HEART_CONTAINER = CATEGORIES.TRASH,
 }
 
 interface ConstructorArgument {
   id: string;
   area: string;
   locationName: string;
-  sphere: number;
+  sphere: number | null;
   itemName: keyof typeof ITEM_IDENTIFIER_TO_NAME;
   player: null;
   world: number;
@@ -261,15 +267,17 @@ export class Item {
   private readonly _name: ITEM_IDENTIFIER_TO_NAME;
   private readonly _identifier: string;
   private readonly _category: CATEGORIES;
-  private readonly _locationId: number;
+  private readonly _locationId: string;
   private readonly _accessible: boolean;
+  private readonly _sphere: number | null;
 
-  constructor({ itemName, id }: ConstructorArgument, accessible: boolean) {
+  constructor({ itemName, id, sphere }: ConstructorArgument, accessible: boolean) {
     this._identifier = itemName;
     this._name = ITEM_IDENTIFIER_TO_NAME[itemName];
     this._category = ITEM_TO_CATEGORY_MAP[itemName] as CATEGORIES;
-    this._locationId = parseInt(id, 16);
+    this._locationId = id;
     this._accessible = accessible;
+    this._sphere = sphere;
   }
 
   getLocation(): Location {
@@ -288,11 +296,15 @@ export class Item {
     return this._category;
   }
 
-  get locationId(): number {
+  get locationId(): string {
     return this._locationId;
   }
 
   get accessible(): boolean {
     return this._accessible;
+  }
+
+  get sphere(): number | null {
+    return this._sphere;
   }
 }

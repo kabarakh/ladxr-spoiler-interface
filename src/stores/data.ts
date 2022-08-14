@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { Location } from "@/models/Location";
 import { CATEGORIES, Item } from "@/models/Item";
 import { Options } from "@/models/Options";
+import { Entrance } from "@/models/Entrance";
 
 interface JsonData {
   accessibleItems: any[],
@@ -52,6 +53,7 @@ export const useDataStore = defineStore({
         options: new Options(jsonData.options),
         locations: [] as Location[],
         items: [] as Item[],
+        entrances: [] as Entrance[],
       };
 
       jsonData.accessibleItems.forEach((entry) => {
@@ -64,10 +66,15 @@ export const useDataStore = defineStore({
         newState.items.push(new Item(entry, false));
       });
 
+      for (let entrancesKey in jsonData.entrances) {
+        newState.entrances.push(new Entrance(entrancesKey, jsonData.entrances[entrancesKey]));
+      };
+
       this.seed = newState.seed;
       this.options = newState.options;
       this.items = newState.items;
       this.locations = newState.locations;
+      this.entrances = newState.entrances;
     },
   },
 });

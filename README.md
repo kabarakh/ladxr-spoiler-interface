@@ -24,7 +24,7 @@ I know, I could also do issues/tasks in Github. But just to make it more visible
 - [X] Display non-accessible items/locations in a different style
 - [X] Implement a "sphere slider" (0 to highest sphere) and highlight items/locations available in the selected sphere.
 That way you can basically make up a route
-- [ ] Entrance list for entrance shuffle/dungeon shuffle/random starting location seeds
+- [X] Entrance list for entrance shuffle/dungeon shuffle/random starting location seeds
 - [ ] Automatically run the deploy script to update the website on push on `main` branch
 - [ ] Style that thing
 - [ ] Map view of locations/Inventory view of items

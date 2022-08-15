@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
 import { useDataStore } from '@/stores/data';
-import UserSettings from '@/components/UserSettings.vue';
+import UserSettings from '@/components/SettingsView/UserSettings.vue';
 
 const dataStorage = useDataStore();
 </script>

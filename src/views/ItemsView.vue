@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CATEGORIES } from "@/models/Item";
-import ItemListPerCategory from "@/components/ItemListPerCategory.vue";
+import ItemListPerCategory from "@/components/ItemsView/ItemListPerCategory.vue";
 import { useDataStore } from "@/stores/data";
 import router from "@/router";
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDataStore } from "@/stores/data";
-import ItemAndLocation from "@/components/ItemAndLocation.vue";
+import ItemAndLocation from "@/components/ItemsView/ItemAndLocation.vue";
 
 const props = defineProps(['category'])
 

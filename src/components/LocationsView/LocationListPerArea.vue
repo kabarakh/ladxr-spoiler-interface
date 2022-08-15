@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDataStore } from "@/stores/data";
-import LocationAndItem from "@/components/LocationAndItem.vue";
+import LocationAndItem from "@/components/LocationsView/LocationAndItem.vue";
 
 const props = defineProps(['area'])
 

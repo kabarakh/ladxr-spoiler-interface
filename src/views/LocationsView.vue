@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDataStore } from "@/stores/data";
 import router from "@/router";
-import LocationListPerArea from "@/components/LocationListPerArea.vue";
+import LocationListPerArea from "@/components/LocationsView/LocationListPerArea.vue";
 
 const store = useDataStore();
 if (!store.seed) {

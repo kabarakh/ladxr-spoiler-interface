@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDataStore } from "@/stores/data";
-import EntranceAndExit from "@/components/EntranceAndExit.vue";
-import ExitAndEntrance from "@/components/ExitAndEntrance.vue";
+import EntranceAndExit from "@/components/EntranceShuffleView/EntranceAndExit.vue";
+import ExitAndEntrance from "@/components/EntranceShuffleView/ExitAndEntrance.vue";
 import router from "@/router";
 import { Entrance } from "@/models/Entrance";
 

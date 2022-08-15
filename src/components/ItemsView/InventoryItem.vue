@@ -63,7 +63,7 @@ items.forEach((item: Item) => {
   &.not-accessible {
     &::before {
       content: " ";
-      background: url("./InventoryIcons/red_cross.png") center center no-repeat;
+      background: url("../InventoryIcons/red_cross.png") center center no-repeat;
       background-size: contain;
       top: 0;
       left: 0;

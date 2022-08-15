@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useUserSettingsStore } from '@/stores/userSettings';
+import { useUserSettingsStore } from "@/stores/userSettings";
 
-const props = defineProps(['location']);
+const props = defineProps(["location"]);
 
 const displayItem = ref(false);
 
@@ -26,7 +26,7 @@ div {
     <span :class="{
       'not-accessible': userSettingsStore.markNonAccessible && !props.location.accessible,
       'not-in-sphere': userSettingsStore.markSphereItems && (props.location.sphere > userSettingsStore.sphere || props.location.sphere === null)
-    }" @click="toggleDisplay">{{props.location.name}}</span>
-    <span v-if="displayItem">{{props.location.getItem().name}}</span>
+    }" @click="toggleDisplay">{{ props.location.name }}</span>
+    <span v-if="displayItem">{{ props.location.getItem().name }}</span>
   </div>
 </template>

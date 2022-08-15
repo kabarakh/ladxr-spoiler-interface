@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
-import { useDataStore } from '@/stores/data';
-import UserSettings from '@/components/SettingsView/UserSettings.vue';
+import { RouterLink, RouterView } from "vue-router";
+import { useDataStore } from "@/stores/data";
+import UserSettings from "@/components/SettingsView/UserSettings.vue";
 
 const dataStorage = useDataStore();
 </script>
@@ -43,12 +43,12 @@ header {
     <div class="seed-settings">
       <div>Current seed: {{ dataStorage.seed || "-" }}</div>
       <div class="user-settings">
-        <UserSettings v-if="dataStorage.seed"/>
+        <UserSettings v-if="dataStorage.seed" />
       </div>
     </div>
   </header>
   <main>
-    <RouterView/>
+    <RouterView />
   </main>
   <footer>
     <a href="https://github.com/kabarakh/ladxr-spoiler-interface/">Fork/View/Star on Github</a>

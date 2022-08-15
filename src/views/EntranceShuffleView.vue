@@ -7,15 +7,15 @@ import { Entrance } from "@/models/Entrance";
 
 const store = useDataStore();
 if (!store.seed) {
-  router.push('/');
+  router.push("/");
 }
 
 const orderedByEntrance = [...store.entrances].sort((a: Entrance, b: Entrance) => {
-  return a.from.localeCompare(b.from, undefined, {sensitivity: "accent"});
+  return a.from.localeCompare(b.from, undefined, { sensitivity: "accent" });
 });
 
 const orderedByExit = [...store.entrances].sort((a: Entrance, b: Entrance) => {
-  return a.to.localeCompare(b.to, undefined, {sensitivity: "accent"});
+  return a.to.localeCompare(b.to, undefined, { sensitivity: "accent" });
 });
 </script>
 
@@ -24,12 +24,12 @@ const orderedByExit = [...store.entrances].sort((a: Entrance, b: Entrance) => {
   <h3>Entrance View</h3>
   <p>Click an entrance name to reveal the target</p>
   <div :key="key" v-for="(entrance, key) in orderedByEntrance">
-    <EntranceAndExit :entrance="entrance"/>
+    <EntranceAndExit :entrance="entrance" />
   </div>
 
   <h3>Exit View</h3>
   <p>Click an exit name to reveal the entrance for it (e.g. if you know where an item is)</p>
   <div :key="key" v-for="(entrance, key) in orderedByExit">
-    <ExitAndEntrance :entrance="entrance"/>
+    <ExitAndEntrance :entrance="entrance" />
   </div>
 </template>

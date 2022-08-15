@@ -19,7 +19,7 @@ export class Location {
   private readonly _sphere: number | null;
   private readonly _accessible: boolean;
 
-  constructor({id, area, sphere, itemName, locationName}: ConstructorArgument, accessible: boolean) {
+  constructor({ id, area, sphere, itemName, locationName }: ConstructorArgument, accessible: boolean) {
     this._id = id;
     this._area = area;
     this._sphere = sphere;

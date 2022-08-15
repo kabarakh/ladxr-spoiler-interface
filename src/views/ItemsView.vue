@@ -6,11 +6,11 @@ import router from "@/router";
 
 const store = useDataStore();
 if (!store.seed) {
-  router.push('/');
+  router.push("/");
 }
 
 const scrollToCategory = (key: string) => {
-  document.querySelector('#' + key).scrollIntoView(true);
+  document.querySelector("#" + key).scrollIntoView(true);
 };
 </script>
 
@@ -19,11 +19,11 @@ const scrollToCategory = (key: string) => {
   <p>Click an item to reveal the location</p>
   <ul>
     <li :key="key" v-for="(category, key) in CATEGORIES">
-      <a @click.prevent="scrollToCategory(key)">{{category}}</a>
+      <a @click.prevent="scrollToCategory(key)">{{ category }}</a>
     </li>
   </ul>
   <div :key="key" v-for="(category, key) in CATEGORIES">
-    <h3 :id="key">{{category}}</h3>
+    <h3 :id="key">{{ category }}</h3>
     <ItemListPerCategory :category="category" />
   </div>
 </template>

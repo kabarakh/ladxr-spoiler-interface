@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const props = defineProps(['entrance'])
+const props = defineProps(["entrance"]);
 
 const displayExit = ref(false);
 
@@ -12,6 +12,6 @@ const toggleDisplay = () => {
 </script>
 
 <template>
-  <span @click="toggleDisplay()">{{props.entrance.from}}</span>
-  <span v-if="displayExit"> -> {{props.entrance.to}}</span>
+  <span @click="toggleDisplay()">{{ props.entrance.from }}</span>
+  <span v-if="displayExit"> -> {{ props.entrance.to }}</span>
 </template>

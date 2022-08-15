@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia';
-import { useDataStore } from '@/stores/data';
-import { Location } from '@/models/Location';
+import { defineStore } from "pinia";
+import { useDataStore } from "@/stores/data";
+import { Location } from "@/models/Location";
 
 export const useUserSettingsStore = defineStore({
-  id: 'ladxr-settings',
+  id: "ladxr-settings",
   state: () => {
     return {
       markNonAccessible: false,

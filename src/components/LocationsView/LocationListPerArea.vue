@@ -2,13 +2,13 @@
 import { useDataStore } from "@/stores/data";
 import LocationAndItem from "@/components/LocationsView/LocationAndItem.vue";
 
-const props = defineProps(['area'])
+const props = defineProps(["area"]);
 
 const store = useDataStore();
-const locations = store.getLocationsByArea(props.area).sort((a, b) =>  a.name.localeCompare(b.name, undefined, {sensitivity: "accent"}));
+const locations = store.getLocationsByArea(props.area).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "accent" }));
 
 const scrollToTop = () => {
-  scrollTo({top: 0});
+  scrollTo({ top: 0 });
 };
 </script>
 

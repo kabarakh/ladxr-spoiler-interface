@@ -68,7 +68,8 @@ export const useDataStore = defineStore({
 
       for (let entrancesKey in jsonData.entrances) {
         newState.entrances.push(new Entrance(entrancesKey, jsonData.entrances[entrancesKey]));
-      };
+      }
+      ;
 
       this.seed = newState.seed;
       this.options = newState.options;

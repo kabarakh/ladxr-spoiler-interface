@@ -5,15 +5,15 @@ import LocationListPerArea from "@/components/LocationsView/LocationListPerArea.
 
 const store = useDataStore();
 if (!store.seed) {
-  router.push('/');
+  router.push("/");
 }
 
 const scrollToArea = (area: string) => {
-  document.querySelector('#' + generateIdFromArea(area)).scrollIntoView(true);
+  document.querySelector("#" + generateIdFromArea(area)).scrollIntoView(true);
 };
 
 const generateIdFromArea = (area: string): string => {
-  return area.replace(/[' ]/g, '_').toLowerCase();
+  return area.replace(/[' ]/g, "_").toLowerCase();
 };
 
 const areas = store.getAllAreas;
@@ -24,11 +24,11 @@ const areas = store.getAllAreas;
   <p>Click a location to reveal the item</p>
   <ul>
     <li :key="area" v-for="area in areas">
-      <a @click.prevent="scrollToArea(area)">{{area}}</a>
+      <a @click.prevent="scrollToArea(area)">{{ area }}</a>
     </li>
   </ul>
   <div :key="area" v-for="area in areas">
-    <h3 :id="generateIdFromArea(area)">{{area}}</h3>
+    <h3 :id="generateIdFromArea(area)">{{ area }}</h3>
     <LocationListPerArea :area="area" />
   </div>
 </template>

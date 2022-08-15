@@ -29,11 +29,13 @@ footer {
   margin: 2rem auto;
 }
 
-.not-accessible {
+.list-entry .not-accessible,
+.location-list li.not-accessible {
   text-decoration: line-through;
   color: darken(#EEEEEE, 25);
 }
 
-.not-in-sphere {
+.list-entry .not-in-sphere,
+.location-list li.not-in-sphere {
   color: darken(#EEEEEE, 25);
 }

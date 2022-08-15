@@ -13,7 +13,7 @@ const scrollToTop = () => {
 </script>
 
 <template>
-  <div :key="location.id" v-for="location in locations">
+  <div class="list-entry" :key="location.id" v-for="location in locations">
     <LocationAndItem :location="location" />
   </div>
   <a @click.prevent="scrollToTop">Back to top</a>

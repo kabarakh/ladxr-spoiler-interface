@@ -12,6 +12,6 @@ const toggleDisplay = () => {
 </script>
 
 <template>
-  <span @click="toggleDisplay()">{{ props.entrance.to }}</span>
-  <span v-if="displayEntrance"> &lt;- {{ props.entrance.from }}</span>
+  <span @click="toggleDisplay()">{{ entrance.to }}</span>
+  <span v-if="displayEntrance"> &lt;- {{ entrance.from }}</span>
 </template>

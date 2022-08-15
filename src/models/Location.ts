@@ -29,7 +29,7 @@ export class Location {
   }
 
   getItem(): Item {
-    return useDataStore().getItemByIdentifier(this._itemIdentifier) as Item;
+    return useDataStore().getItemByLocationId(this._id) as Item;
   }
 
   get id(): string {

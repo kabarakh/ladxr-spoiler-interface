@@ -39,8 +39,11 @@ export const useDataStore = defineStore({
       });
       return areas;
     },
-    getItemByIdentifier: (state) => {
-      return (itemIdentifier: string) => state.items.find((item: Item) => item.identifier === itemIdentifier);
+    getItemsByIdentifier: (state) => {
+      return (itemIdentifier: string) => state.items.filter((item: Item) => item.identifier === itemIdentifier);
+    },
+    getItemByLocationId: (state) => {
+      return (locationId: string) => state.items.filter((item: Item) => item.locationId === locationId);
     },
     getItemsByCategory: (state) => {
       return (category: CATEGORIES) => state.items.filter((item: Item) => item.category === category);
@@ -66,10 +69,9 @@ export const useDataStore = defineStore({
         newState.items.push(new Item(entry, false));
       });
 
-      for (let entrancesKey in jsonData.entrances) {
+      for (const entrancesKey in jsonData.entrances) {
         newState.entrances.push(new Entrance(entrancesKey, jsonData.entrances[entrancesKey]));
       }
-      ;
 
       this.seed = newState.seed;
       this.options = newState.options;

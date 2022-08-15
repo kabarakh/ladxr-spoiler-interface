@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useDataStore } from "@/stores/data";
 import { Location } from "@/models/Location";
+import { VIEW_MODES } from "@/models/Utility";
 
 export const useUserSettingsStore = defineStore({
   id: "ladxr-settings",
@@ -9,6 +10,7 @@ export const useUserSettingsStore = defineStore({
       markNonAccessible: false,
       markSphereItems: false,
       sphere: 0,
+      viewMode:VIEW_MODES.GRAPHIC
     };
   },
   getters: {
@@ -25,6 +27,13 @@ export const useUserSettingsStore = defineStore({
     },
     setMarkSphereItems(markSphereItems: boolean) {
       this.markSphereItems = markSphereItems;
+    },
+    toggleViewMode() {
+      if (this.viewMode === VIEW_MODES.GRAPHIC) {
+        this.viewMode = VIEW_MODES.LIST;
+      } else {
+        this.viewMode = VIEW_MODES.GRAPHIC;
+      }
     },
   },
 });

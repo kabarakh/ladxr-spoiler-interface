@@ -1,29 +1,14 @@
 <script setup lang="ts">
-import { CATEGORIES } from "@/models/Item";
-import ItemListPerCategory from "@/components/ItemsView/ItemListPerCategory.vue";
-import { useDataStore } from "@/stores/data";
-import router from "@/router";
+import ItemList from "@/components/ItemsView/ItemList.vue";
+import Inventory from "@/components/ItemsView/Inventory.vue";
+import { useUserSettingsStore } from "@/stores/userSettings";
+import { VIEW_MODES } from "@/models/Utility";
 
-const store = useDataStore();
-if (!store.seed) {
-  router.push("/");
-}
-
-const scrollToCategory = (key: string) => {
-  document.querySelector("#" + key).scrollIntoView(true);
-};
+const userSettingsStore = useUserSettingsStore();
 </script>
 
 <template>
   <h2>Items View</h2>
-  <p>Click an item to reveal the location</p>
-  <ul>
-    <li :key="key" v-for="(category, key) in CATEGORIES">
-      <a @click.prevent="scrollToCategory(key)">{{ category }}</a>
-    </li>
-  </ul>
-  <div :key="key" v-for="(category, key) in CATEGORIES">
-    <h3 :id="key">{{ category }}</h3>
-    <ItemListPerCategory :category="category" />
-  </div>
+  <ItemList v-if="userSettingsStore.viewMode === VIEW_MODES.LIST" />
+  <Inventory v-if="userSettingsStore.viewMode === VIEW_MODES.GRAPHIC" />
 </template>

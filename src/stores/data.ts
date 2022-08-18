@@ -43,7 +43,7 @@ export const useDataStore = defineStore({
       return (itemIdentifier: string) => state.items.filter((item: Item) => item.identifier === itemIdentifier);
     },
     getItemByLocationId: (state) => {
-      return (locationId: string) => state.items.filter((item: Item) => item.locationId === locationId);
+      return (locationId: string) => state.items.find((item: Item) => item.locationId === locationId);
     },
     getItemsByCategory: (state) => {
       return (category: CATEGORIES) => state.items.filter((item: Item) => item.category === category);

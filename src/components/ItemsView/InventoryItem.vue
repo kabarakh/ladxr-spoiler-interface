@@ -29,7 +29,7 @@ const store = useDataStore();
 const userSettingsStore = useUserSettingsStore();
 
 const items = store.getItemsByIdentifier(props.item?.identifier || "");
-const spheres: number[] = items.map((item: Item) => parseInt(item.sphere, 10));
+const spheres: number[] = items.map((item: Item) => parseInt(item.sphere, 10) || 999);
 const lowestSphere = Math.min(...spheres);
 
 let accessible = false;

@@ -322,7 +322,7 @@ const setDisplayItemIdentifier = (newIdentifier: string) => {
     <InventoryItem
       :displayItemIdentifier="displayItemIdentifier"
       :setDisplayItemIdentifier="setDisplayItemIdentifier"
-      :item="store.getItemsByIdentifier('TRADING_ITEM_MAGNIFIYING_GLASS')[0]"
+      :item="store.getItemsByIdentifier('TRADING_ITEM_MAGNIFYING_GLASS')[0]"
     />
   </div>
   <div class="inventory-row">

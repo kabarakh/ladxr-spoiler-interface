@@ -80,8 +80,8 @@ items.forEach((item: Item) => {
   <div class="inventory-item" :class="{
       'not-accessible': userSettingsStore.markNonAccessible && !accessible,
       'not-in-sphere': userSettingsStore.markSphereItems && (lowestSphere > userSettingsStore.sphere || item.sphere === null)
-    }" v-if="item">
-    <img @click="setDisplayItemIdentifier(item.identifier)" :src="imgUrl" :alt="item.name" class="icon" />
+    }" v-if="item" @click="setDisplayItemIdentifier(item.identifier)">
+    <img :src="imgUrl" :alt="item.name" class="icon" />
     <InventoryLocationList :items="items" v-if="displayItemIdentifier === item.identifier" />
   </div>
 </template>

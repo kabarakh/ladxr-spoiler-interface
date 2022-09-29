@@ -18,7 +18,6 @@ label {
   flex-direction: row;
   width: 2rem;
   height: 1rem;
-
 }
 
 /* Hide default HTML checkbox */
@@ -37,20 +36,20 @@ label {
   right: 0;
   bottom: 0;
   background-color: #900;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: .7rem;
-  width: .7rem;
-  left: .2rem;
-  bottom: .1rem;
+  height: 0.7rem;
+  width: 0.7rem;
+  left: 0.2rem;
+  bottom: 0.1rem;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider:before {
@@ -114,11 +113,6 @@ input:checked + .slider:before {
   </label>
   <label v-if="userSettingsStore.markSphereItems">
     Sphere {{ userSettingsStore.sphere }}
-    <input
-      type="range"
-      v-model="userSettingsStore.sphere"
-      min="0"
-      :max="userSettingsStore.getMaxSphere"
-    />
+    <input type="range" v-model="userSettingsStore.sphere" min="0" :max="userSettingsStore.getMaxSphere" />
   </label>
 </template>

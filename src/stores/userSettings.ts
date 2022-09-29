@@ -10,7 +10,7 @@ export const useUserSettingsStore = defineStore({
       markNonAccessible: false,
       markSphereItems: false,
       sphere: 0,
-      viewMode:VIEW_MODES.GRAPHIC
+      viewMode: VIEW_MODES.GRAPHIC,
     };
   },
   getters: {

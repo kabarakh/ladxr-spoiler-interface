@@ -8,7 +8,6 @@ const displayEntrance = ref(false);
 const toggleDisplay = () => {
   displayEntrance.value = !displayEntrance.value;
 };
-
 </script>
 
 <template>

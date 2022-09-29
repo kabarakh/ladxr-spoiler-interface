@@ -31,8 +31,10 @@ const validationText = ref("");
   <div v-if="messageText" class="alert alert-danger">{{ messageText }}</div>
   <input type="file" name="jsonData" @change="checkFile" />
   <div
-    v-if="validationText" class="alert"
-    :class="{'alert-danger': validationText === 'invalid', 'alert-success': validationText === 'valid'}">
+    v-if="validationText"
+    class="alert"
+    :class="{ 'alert-danger': validationText === 'invalid', 'alert-success': validationText === 'valid' }"
+  >
     {{ validationText }}
   </div>
 </template>

@@ -10,10 +10,16 @@ const locations = props.items.map((item: Item) => item.getLocation());
 
 <template>
   <ul class="location-list">
-    <li :class="{
-      'not-accessible': userSettingsStore.markNonAccessible && !location.accessible,
-      'not-in-sphere': userSettingsStore.markSphereItems && (location.sphere > userSettingsStore.sphere || location.sphere === null)
-    }" v-for="location in locations" :key="location.id">{{ location.area }} - {{ location.name }}
+    <li
+      :class="{
+        'not-accessible': userSettingsStore.markNonAccessible && !location.accessible,
+        'not-in-sphere':
+          userSettingsStore.markSphereItems && (location.sphere > userSettingsStore.sphere || location.sphere === null),
+      }"
+      v-for="location in locations"
+      :key="location.id"
+    >
+      {{ location.area }} - {{ location.name }}
     </li>
   </ul>
 </template>

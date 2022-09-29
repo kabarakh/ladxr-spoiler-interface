@@ -58,7 +58,7 @@ const GOALS = {
   "5-8": "Random long game (5-8 Instruments)",
   seashells: "Seashell hunt (20)",
   bingo: "Bingo!",
-  "bingo-full": "Bingo-25!"
+  "bingo-full": "Bingo-25!",
 };
 
 enum ACCESSIBILITY_RULE {
@@ -182,7 +182,7 @@ export class Options {
     accessibility_rule,
     bowwow,
     itempool,
-    overworld
+    overworld,
   }: ConstructorArguments) {
     if (!logic) {
       logic = "normal";

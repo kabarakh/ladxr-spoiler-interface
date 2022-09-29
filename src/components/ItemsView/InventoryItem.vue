@@ -29,7 +29,7 @@ const store = useDataStore();
 const userSettingsStore = useUserSettingsStore();
 
 const items = store.getItemsByIdentifier(props.item?.identifier || "");
-const spheres: number[] = items.map((item: Item) => item.sphere === null ? 999 : parseInt(item.sphere, 10));
+const spheres: number[] = items.map((item: Item) => (item.sphere === null ? 999 : parseInt(item.sphere, 10)));
 const lowestSphere = Math.min(...spheres);
 
 let accessible = false;
@@ -50,7 +50,7 @@ items.forEach((item: Item) => {
     top: 25%;
     left: 50%;
     background: #303040;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border: 1px solid #990000;
     box-shadow: 3px 3px 3px #101010;
     z-index: 5;
@@ -77,10 +77,16 @@ items.forEach((item: Item) => {
 </style>
 
 <template>
-  <div class="inventory-item" :class="{
+  <div
+    class="inventory-item"
+    :class="{
       'not-accessible': userSettingsStore.markNonAccessible && !accessible,
-      'not-in-sphere': userSettingsStore.markSphereItems && (lowestSphere > userSettingsStore.sphere || item.sphere === null)
-    }" v-if="item" @click="setDisplayItemIdentifier(item.identifier)">
+      'not-in-sphere':
+        userSettingsStore.markSphereItems && (lowestSphere > userSettingsStore.sphere || item.sphere === null),
+    }"
+    v-if="item"
+    @click="setDisplayItemIdentifier(item.identifier)"
+  >
     <img :src="imgUrl" :alt="item.name" class="icon" />
     <InventoryLocationList :items="items" v-if="displayItemIdentifier === item.identifier" />
   </div>

@@ -35,8 +35,7 @@ header {
       <RouterLink to="/">Upload JSON file</RouterLink>
       <RouterLink v-if="dataStorage.seed" to="/items">Items view</RouterLink>
       <RouterLink v-if="dataStorage.seed" to="/locations">Locations view</RouterLink>
-      <RouterLink v-if="dataStorage.seed && dataStorage.entrances.length" to="/entrances">Entrances view
-      </RouterLink>
+      <RouterLink v-if="dataStorage.seed && dataStorage.entrances.length" to="/entrances">Entrances view </RouterLink>
       <RouterLink v-if="dataStorage.seed" to="/settings">Verify settings</RouterLink>
       <RouterLink to="/imprint">Imprint</RouterLink>
     </nav>

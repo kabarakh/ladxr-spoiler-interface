@@ -4,21 +4,20 @@
 
 body {
   background: #303040;
-  color: #EEEEEE;
+  color: #eeeeee;
   margin: 0;
 
   font-family: sans-serif;
 }
 
 a {
-  color: #DD5050;
+  color: #dd5050;
   text-decoration: underline;
 
   &:hover {
     cursor: pointer;
-    color: #FF6060;
+    color: #ff6060;
   }
-
 }
 
 header,
@@ -32,10 +31,10 @@ footer {
 .list-entry .not-accessible,
 .location-list li.not-accessible {
   text-decoration: line-through;
-  color: darken(#EEEEEE, 25);
+  color: darken(#eeeeee, 25);
 }
 
 .list-entry .not-in-sphere,
 .location-list li.not-in-sphere {
-  color: darken(#EEEEEE, 25);
+  color: darken(#eeeeee, 25);
 }

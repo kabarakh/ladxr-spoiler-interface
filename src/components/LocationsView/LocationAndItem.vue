@@ -23,10 +23,15 @@ div {
 
 <template>
   <div>
-    <span :class="{
-      'not-accessible': userSettingsStore.markNonAccessible && !location.accessible,
-      'not-in-sphere': userSettingsStore.markSphereItems && (location.sphere > userSettingsStore.sphere || location.sphere === null)
-    }" @click="toggleDisplay">{{ location.name }}</span>
+    <span
+      :class="{
+        'not-accessible': userSettingsStore.markNonAccessible && !location.accessible,
+        'not-in-sphere':
+          userSettingsStore.markSphereItems && (location.sphere > userSettingsStore.sphere || location.sphere === null),
+      }"
+      @click="toggleDisplay"
+      >{{ location.name }}</span
+    >
     <span v-if="displayItem">{{ location.getItem().name }}</span>
   </div>
 </template>

@@ -8,7 +8,6 @@ const displayExit = ref(false);
 const toggleDisplay = () => {
   displayExit.value = !displayExit.value;
 };
-
 </script>
 
 <template>

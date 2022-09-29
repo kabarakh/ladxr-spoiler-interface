@@ -5,11 +5,11 @@ import { Options } from "@/models/Options";
 import { Entrance } from "@/models/Entrance";
 
 interface JsonData {
-  accessibleItems: any[],
-  inaccessibleItems: any[],
-  options: any,
-  entrances: any,
-  seed: string,
+  accessibleItems: any[];
+  inaccessibleItems: any[];
+  options: any;
+  entrances: any;
+  seed: string;
 }
 
 export const useDataStore = defineStore({

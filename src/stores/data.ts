@@ -19,7 +19,7 @@ export const useDataStore = defineStore({
       locations: [] as Location[],
       items: [] as Item[],
       options: {} as Options,
-      entrances: [],
+      entrances: [] as Entrance[],
       seed: "",
     };
   },

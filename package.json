@@ -21,11 +21,13 @@
     "ajv": "^8.11.0",
     "pinia": "^2.0.16",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.2"
+    "vue-router": "^4.1.2",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.45",
+    "@types/lodash": "^4.14.188",
     "@vitejs/plugin-vue": "^3.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",

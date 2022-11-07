@@ -3,18 +3,19 @@ import { useDataStore } from "@/stores/data";
 import EntranceAndExit from "@/components/EntranceShuffleView/EntranceAndExit.vue";
 import ExitAndEntrance from "@/components/EntranceShuffleView/ExitAndEntrance.vue";
 import router from "@/router";
-import { Entrance } from "@/models/Entrance";
+import type { Entrance } from "@/models/Entrance";
+import { sortBy } from "lodash";
 
 const store = useDataStore();
 if (!store.seed) {
   router.push("/");
 }
 
-const orderedByEntrance = [...store.entrances].sort((a: Entrance, b: Entrance) => {
+const orderedByEntrance = sortBy([...store.entrances], (a: Entrance, b: Entrance) => {
   return a.from.localeCompare(b.from, undefined, { sensitivity: "accent" });
 });
 
-const orderedByExit = [...store.entrances].sort((a: Entrance, b: Entrance) => {
+const orderedByExit = sortBy([...store.entrances],(a: Entrance, b: Entrance) => {
   return a.to.localeCompare(b.to, undefined, { sensitivity: "accent" });
 });
 </script>

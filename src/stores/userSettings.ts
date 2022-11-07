@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { useDataStore } from "@/stores/data";
-import { Location } from "@/models/Location";
+import type { Location } from "@/models/Location";
 import { VIEW_MODES } from "@/models/Utility";
+import { isNumber, map } from "lodash";
 
 export const useUserSettingsStore = defineStore({
   id: "ladxr-settings",
@@ -10,14 +11,16 @@ export const useUserSettingsStore = defineStore({
       markNonAccessible: false,
       markSphereItems: false,
       sphere: 0,
-      viewMode:VIEW_MODES.GRAPHIC
+      viewMode: VIEW_MODES.GRAPHIC,
     };
   },
   getters: {
-    getSphere: (state) => (!state.markSphereItems ? -1 : parseInt(state.sphere, 10)),
+    getSphere: (state) => (!state.markSphereItems ? -1 : state.sphere),
     getMaxSphere: () => {
       const dataStore = useDataStore();
-      const spheres = dataStore.locations.map((location: Location) => location.sphere || -1);
+      const spheres = map(dataStore.locations, (location: Location) => {
+        return isNumber(location.sphere) ? location.sphere : -1;
+      });
       return Math.max(...spheres);
     },
   },

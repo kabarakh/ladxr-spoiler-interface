@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Item } from "@/models/Item";
+import type { Item } from "@/models/Item";
 import { useUserSettingsStore } from "@/stores/userSettings";
 
 const props = defineProps(["items"]);

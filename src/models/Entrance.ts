@@ -1,4 +1,4 @@
-const ENTRANCE_LIST = {
+const ENTRANCE_LIST: {[key: string]: string} = {
   d8: "Turtle Rock",
   phone_d8: "Turtle Rock Phone Booth",
   fire_cave_exit: "Fire Cave Exit",

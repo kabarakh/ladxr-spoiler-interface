@@ -1,0 +1,32 @@
+{
+  "$id": "http://kabarakh.github.io/ladx-spoiler-interface/schemas/locations.json",
+  "definitions": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "sphere": {
+          "type": ["number", "null"]
+        },
+        "itemName": {
+          "type": "string"
+        },
+        "player": {
+          "type": ["number", "null"]
+        },
+        "world": {
+          "type": "number"
+        }
+      },
+      "required": ["id", "area", "locationName", "sphere", "itemName", "player", "world"]
+    }
+  }
+}

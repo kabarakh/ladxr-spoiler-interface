@@ -1,0 +1,137 @@
+{
+  "$id": "http://kabarakh.github.io/ladx-spoiler-interface/schemas/spoilerLog.json",
+  "type": "object",
+  "properties": {
+    "accessibleItems": {
+      "type": "array",
+      "items": {
+        "$ref": "locations.json#/definitions/location"
+      },
+      "minItems": 1
+    },
+    "inaccessibleItems": {
+      "type": "array",
+      "items": {
+        "$ref": "locations.json#/definitions/location"
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "seed": {
+          "type": "string"
+        },
+        "logic": {
+          "type": "string",
+          "enum": ["casual", "", "hard", "glitched", "hell"]
+        },
+        "forwardfactor": {
+          "type": "number"
+        },
+        "accessibility": {
+          "type": "string",
+          "enum": ["all", "goal"]
+        },
+        "race": {
+          "type": "boolean"
+        },
+        "heartpiece": {
+          "type": "boolean"
+        },
+        "seashells": {
+          "type": "boolean"
+        },
+        "heartcontainers": {
+          "type": "boolean"
+        },
+        "instruments": {
+          "type": "boolean"
+        },
+        "tradequest": {
+          "type": "boolean"
+        },
+        "witch": {
+          "type": "boolean"
+        },
+        "rooster": {
+          "type": "boolean"
+        },
+        "boomerang": {
+          "type": "string",
+          "enum": ["default", "trade", "gift"]
+        },
+        "dungeon_items": {
+          "type": "string",
+          "enum": ["", "smallkeys", "localkeys", "localnightmarekey", "keysanity", "keysy"]
+        },
+        "randomstartlocation": {
+          "type": "boolean"
+        },
+        "dungeonshuffle": {
+          "type": "boolean"
+        },
+        "entranceshuffle": {
+          "type": "string",
+          "enum": ["none", "simple", "advanced", "expert", "insanity"]
+        },
+        "goal": {
+          "type": "string",
+          "enum": [
+            "8",
+            "7",
+            "6",
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+            "0",
+            "open",
+            "random",
+            "open-4",
+            "5-8",
+            "seashells",
+            "bingo",
+            "bingo-full"
+          ]
+        },
+        "itempool": {
+          "type": "string",
+          "enum": ["", "casual", "pain", "keyup"]
+        },
+        "hpmode": {
+          "type": "string",
+          "enum": ["default", "inverted", "1", "low"]
+        },
+        "steal": {
+          "type": "string",
+          "enum": ["always", "never", "default"]
+        },
+        "bowwow": {
+          "type": "string",
+          "enum": ["normal", "always", "swordless"]
+        },
+        "overworld": {
+          "type": "string",
+          "enum": ["normal", "dungeondive", "nodungeons", "random"]
+        },
+        "owlstatues": {
+          "type": "string",
+          "enum": ["", "dungeon", "overworld", "both"]
+        }
+      }
+    },
+    "entrances": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "string"
+        }
+      }
+    },
+    "seed": {
+      "type": "string"
+    }
+  },
+  "required": ["accessibleItems", "inaccessibleItems", "options", "entrances", "seed"]
+}

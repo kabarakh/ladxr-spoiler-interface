@@ -15,7 +15,7 @@ const orderedByEntrance = sortBy([...store.entrances], (a: Entrance, b: Entrance
   return a.from.localeCompare(b.from, undefined, { sensitivity: "accent" });
 });
 
-const orderedByExit = sortBy([...store.entrances],(a: Entrance, b: Entrance) => {
+const orderedByExit = sortBy([...store.entrances], (a: Entrance, b: Entrance) => {
   return a.to.localeCompare(b.to, undefined, { sensitivity: "accent" });
 });
 </script>

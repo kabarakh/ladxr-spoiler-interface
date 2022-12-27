@@ -29,4 +29,4 @@ That way you can basically make up a route
 - [ ] Style that thing
 - [ ] Map view of locations
 - [X] Inventory view of items
-- [ ] Validate the uploaded JSON file against a schema file
+- [X] Validate the uploaded JSON file against a schema file

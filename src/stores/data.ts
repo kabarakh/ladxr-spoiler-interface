@@ -19,13 +19,13 @@ export const useDataStore = defineStore({
       locations: [] as Location[],
       items: [] as Item[],
       options: {} as Options,
-      entrances: [],
+      entrances: [] as Entrance[],
       seed: "",
     };
   },
   getters: {
     getLocationById: (state) => {
-      return (locationId: number) => state.locations.find((location: Location) => location.id === locationId);
+      return (locationId: string) => state.locations.find((location: Location) => location.id === locationId);
     },
     getLocationsByArea: (state) => {
       return (area: string) => state.locations.filter((location: Location) => location.area === area);
@@ -40,13 +40,13 @@ export const useDataStore = defineStore({
       return areas;
     },
     getItemsByIdentifier: (state) => {
-      return (itemIdentifier: string) => state.items.filter((item: Item) => item.identifier === itemIdentifier);
+      return (itemIdentifier: string): Item[] => state.items.filter((item: Item) => item.identifier === itemIdentifier);
     },
     getItemByLocationId: (state) => {
-      return (locationId: string) => state.items.find((item: Item) => item.locationId === locationId);
+      return (locationId: string): Item => state.items.find((item: Item) => item.locationId === locationId);
     },
     getItemsByCategory: (state) => {
-      return (category: CATEGORIES) => state.items.filter((item: Item) => item.category === category);
+      return (category: CATEGORIES): Item[] => state.items.filter((item: Item) => item.category === category);
     },
   },
   actions: {

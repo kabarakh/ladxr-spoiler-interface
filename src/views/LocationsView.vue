@@ -9,7 +9,7 @@ if (!store.seed) {
 }
 
 const scrollToArea = (area: string) => {
-  document.querySelector("#" + generateIdFromArea(area)).scrollIntoView(true);
+  document.querySelector("#" + generateIdFromArea(area))?.scrollIntoView(true);
 };
 
 const generateIdFromArea = (area: string): string => {

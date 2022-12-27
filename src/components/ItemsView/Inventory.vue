@@ -13,8 +13,8 @@ const fairyImgUrl = `./InventoryIcons/fairy.png`;
 
 const displayItemIdentifier = ref("");
 
-const setDisplayItemIdentifier = (newIdentifier: string) => {
-  if (displayItemIdentifier.value === newIdentifier) {
+const setDisplayItemIdentifier = (newIdentifier?: string) => {
+  if (!newIdentifier || displayItemIdentifier.value === newIdentifier) {
     displayItemIdentifier.value = "";
   } else {
     displayItemIdentifier.value = newIdentifier;

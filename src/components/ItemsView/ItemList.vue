@@ -10,7 +10,7 @@ if (!store.seed) {
 }
 
 const scrollToCategory = (key: string) => {
-  document.querySelector("#" + key).scrollIntoView(true);
+  document.querySelector("#" + key)?.scrollIntoView(true);
 };
 </script>
 

@@ -83,6 +83,7 @@ enum OVERWORLD {
   normal = "Normal",
   dungeondive = "Dungeon Dive",
   nodungeon = "No Dungeons",
+  random = "Random",
 }
 
 interface ConstructorArguments {

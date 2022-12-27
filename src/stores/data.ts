@@ -4,7 +4,7 @@ import { CATEGORIES, Item } from "@/models/Item";
 import { Options } from "@/models/Options";
 import { Entrance } from "@/models/Entrance";
 
-interface JsonData {
+export interface JsonData {
   accessibleItems: any[];
   inaccessibleItems: any[];
   options: any;
@@ -50,6 +50,15 @@ export const useDataStore = defineStore({
     },
   },
   actions: {
+    reset() {
+      this.$patch({
+        locations: [] as Location[],
+        items: [] as Item[],
+        options: {} as Options,
+        entrances: [] as Entrance[],
+        seed: "",
+      });
+    },
     generateStore(jsonData: JsonData) {
       const newState = {
         seed: jsonData.seed,

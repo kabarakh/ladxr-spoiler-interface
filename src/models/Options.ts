@@ -61,10 +61,10 @@ const GOALS = {
   "bingo-full": "Bingo-25!",
 };
 
-enum ACCESSIBILITY_RULE {
-  all = "100% Locations",
-  goal = "Beatable",
-}
+const ACCESSIBILITY_RULE = {
+  all: "100% Locations",
+  goal: "Beatable",
+};
 
 enum BOWWOW {
   normal = "Normal",
@@ -73,7 +73,7 @@ enum BOWWOW {
 }
 
 enum ITEMPOOL {
-  normal = "Normal",
+  "" = "Normal",
   casual = "Easier casual mode",
   pain = "Path of Pain",
   keyup = "More Keys",
@@ -126,7 +126,7 @@ interface ConstructorArguments {
   hardMode: any;
   superweapons: boolean;
   goal: keyof typeof GOALS;
-  accessibility_rule: keyof typeof ACCESSIBILITY_RULE;
+  accessibility: keyof typeof ACCESSIBILITY_RULE;
   bowwow: keyof typeof BOWWOW;
   itempool: keyof typeof ITEMPOOL;
   overworld: keyof typeof OVERWORLD;
@@ -158,7 +158,7 @@ export class Options {
   private readonly _boomerang: BOOMERANG_GIFT;
   private readonly _steal: STEAL;
   private readonly _goal: typeof GOALS[keyof typeof GOALS];
-  private readonly _accessibilityRule: ACCESSIBILITY_RULE;
+  private readonly _accessibilityRule: string;
   private readonly _bowwow: BOWWOW;
   private readonly _itempool: ITEMPOOL;
   private readonly _overworld: OVERWORLD;
@@ -180,7 +180,7 @@ export class Options {
     boomerang,
     steal,
     goal,
-    accessibility_rule,
+    accessibility,
     bowwow,
     itempool,
     overworld,
@@ -204,7 +204,7 @@ export class Options {
     this._boomerang = BOOMERANG_GIFT[boomerang];
     this._steal = STEAL[steal];
     this._goal = GOALS[goal];
-    this._accessibilityRule = ACCESSIBILITY_RULE[accessibility_rule];
+    this._accessibilityRule = ACCESSIBILITY_RULE[accessibility];
     this._bowwow = BOWWOW[bowwow];
     this._itempool = ITEMPOOL[itempool];
     this._overworld = OVERWORLD[overworld];
@@ -274,7 +274,7 @@ export class Options {
     return this._goal;
   }
 
-  get accessibilityRule(): ACCESSIBILITY_RULE {
+  get accessibilityRule(): string {
     return this._accessibilityRule;
   }
 

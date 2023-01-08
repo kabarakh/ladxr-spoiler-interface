@@ -3,6 +3,7 @@ import { Location } from "@/models/Location";
 import { CATEGORIES, Item } from "@/models/Item";
 import { Options } from "@/models/Options";
 import { Entrance } from "@/models/Entrance";
+import { sortBy } from "lodash";
 
 export interface JsonData {
   accessibleItems: any[];
@@ -47,6 +48,12 @@ export const useDataStore = defineStore({
     },
     getItemsByCategory: (state) => {
       return (category: CATEGORIES): Item[] => state.items.filter((item: Item) => item.category === category);
+    },
+    getEntrancesOrderedByEntrance: (state) => {
+      return sortBy(state.entrances, 'from');
+    },
+    getEntrancesOrderedByExit: (state) => {
+      return sortBy(state.entrances, 'to');
     },
   },
   actions: {

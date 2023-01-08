@@ -35,7 +35,7 @@ watch(files, async (newFileList: FileList) => {
         validationClass.value = "invalid";
       }
     } catch (error) {
-      messageText.value = "Invalid JSON: Error during validation";
+      messageText.value = `Invalid JSON: Error during validation (${error})`;
       validationClass.value = "invalid";
     }
   };

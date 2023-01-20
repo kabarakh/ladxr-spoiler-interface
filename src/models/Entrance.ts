@@ -1,4 +1,4 @@
-const ENTRANCE_LIST: { [key: string]: string } = {
+export const ENTRANCE_LIST = {
   d8: "Turtle Rock",
   phone_d8: "Turtle Rock Phone Booth",
   fire_cave_exit: "Fire Cave Exit",
@@ -105,22 +105,9 @@ const ENTRANCE_LIST: { [key: string]: string } = {
   animal_house5: "Animal Village - Bear Cook",
   animal_cave: "Animal Village - Cave",
   desert_cave: "Desert Cave",
-};
+} as const;
 
-export class Entrance {
-  private readonly _from: string;
-  private readonly _to: string;
-
-  constructor(from: string, to: string) {
-    this._from = ENTRANCE_LIST[from];
-    this._to = ENTRANCE_LIST[to];
-  }
-
-  get from(): string {
-    return this._from;
-  }
-
-  get to(): string {
-    return this._to;
-  }
+export default interface Entrance {
+  from: typeof ENTRANCE_LIST[keyof typeof ENTRANCE_LIST];
+  to: typeof ENTRANCE_LIST[keyof typeof ENTRANCE_LIST];
 }

@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import { Location } from "@/models/Location";
-import { CATEGORIES, Item } from "@/models/Item";
+import { CATEGORIES, Item, ITEM_IDENTIFIER_TO_NAME } from "@/models/Item";
 import { Options } from "@/models/Options";
-import { Entrance } from "@/models/Entrance";
+import { Entrance, ENTRANCE_LIST } from "@/models/Entrance";
 import { sortBy } from "lodash";
 
 export interface JsonData {
@@ -50,10 +50,10 @@ export const useDataStore = defineStore({
       return (category: CATEGORIES): Item[] => state.items.filter((item: Item) => item.category === category);
     },
     getEntrancesOrderedByEntrance: (state) => {
-      return sortBy(state.entrances, 'from');
+      return sortBy(state.entrances, "from");
     },
     getEntrancesOrderedByExit: (state) => {
-      return sortBy(state.entrances, 'to');
+      return sortBy(state.entrances, "to");
     },
   },
   actions: {
@@ -76,17 +76,55 @@ export const useDataStore = defineStore({
       };
 
       jsonData.accessibleItems.forEach((entry) => {
-        newState.locations.push(new Location(entry, true));
-        newState.items.push(new Item(entry, true));
+        const newLocation: Location = {
+          accessible: true,
+          area: entry.area,
+          sphere: entry.sphere,
+          name: entry.locationName,
+          id: entry.id,
+          itemIdentifier: entry.itemName,
+        };
+        newState.locations.push(newLocation);
+
+        const newItem: Item = {
+          sphere: entry.sphere,
+          category: entry.category,
+          identifier: entry.itemName,
+          locationId: entry.id,
+          name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
+          accessible: true,
+        };
+        newState.items.push(newItem);
       });
 
       jsonData.inaccessibleItems.forEach((entry) => {
-        newState.locations.push(new Location(entry, false));
-        newState.items.push(new Item(entry, false));
+        const newLocation: Location = {
+          accessible: false,
+          area: entry.area,
+          sphere: entry.sphere,
+          name: entry.locationName,
+          id: entry.id,
+          itemIdentifier: entry.itemName,
+        };
+        newState.locations.push(newLocation);
+
+        const newItem: Item = {
+          sphere: entry.sphere,
+          category: entry.category,
+          identifier: entry.itemName,
+          locationId: entry.id,
+          name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
+          accessible: true,
+        };
+        newState.items.push(newItem);
       });
 
       for (const entrancesKey in jsonData.entrances) {
-        newState.entrances.push(new Entrance(entrancesKey, jsonData.entrances[entrancesKey]));
+        const newEntrance: Entrance = {
+          from: ENTRANCE_LIST[entrancesKey as keyof typeof ENTRANCE_LIST],
+          to: ENTRANCE_LIST[jsonData.entrances[entrancesKey] as keyof typeof ENTRANCE_LIST],
+        };
+        newState.entrances.push(newEntrance);
       }
 
       this.seed = newState.seed;

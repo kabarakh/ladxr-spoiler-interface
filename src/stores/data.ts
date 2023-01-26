@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import type { Location } from "@/models/Location";
-import { CATEGORIES, type Item, ITEM_IDENTIFIER_TO_NAME } from "@/models/Item";
+import { CATEGORIES, type Item, ITEM_IDENTIFIER_TO_NAME, ITEM_TO_CATEGORY_MAP } from "@/models/Item";
 import { Options } from "@/models/Options";
 import { type Entrance, ENTRANCE_LIST } from "@/models/Entrance";
 import { sortBy } from "lodash";
@@ -89,10 +89,10 @@ export const useDataStore = defineStore({
 
         const newItem: Item = {
           sphere: entry.sphere,
-          category: entry.category,
           identifier: entry.itemName,
           locationId: entry.id,
           name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
+          category: ITEM_TO_CATEGORY_MAP[entry.itemName as keyof typeof ITEM_TO_CATEGORY_MAP],
           accessible: true,
         };
         newState.items.push(newItem);
@@ -111,7 +111,7 @@ export const useDataStore = defineStore({
 
         const newItem: Item = {
           sphere: entry.sphere,
-          category: entry.category,
+          category: ITEM_TO_CATEGORY_MAP[entry.itemName as keyof typeof ITEM_TO_CATEGORY_MAP],
           identifier: entry.itemName,
           locationId: entry.id,
           name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],

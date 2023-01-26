@@ -255,7 +255,7 @@ export const ITEM_TO_CATEGORY_MAP = {
 export interface Item {
   name: typeof ITEM_IDENTIFIER_TO_NAME[keyof typeof ITEM_IDENTIFIER_TO_NAME];
   identifier: string;
-  category: typeof CATEGORIES[keyof typeof CATEGORIES];
+  category: typeof ITEM_TO_CATEGORY_MAP[keyof typeof ITEM_TO_CATEGORY_MAP];
   locationId: string;
   accessible: boolean;
   sphere: number | null;

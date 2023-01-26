@@ -1,5 +1,3 @@
-import type { Location } from "@/models/Location";
-
 export const ITEM_IDENTIFIER_TO_NAME = {
   SWORD: "Sword",
   FEATHER: "Roc's Feather",

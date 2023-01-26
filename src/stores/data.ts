@@ -18,11 +18,11 @@ export const useDataStore = defineStore({
   id: "ladxr-data",
   state: () => {
     return {
-      locations: useLocalStorage('data.locations', [] as Location[]),
-      items: useLocalStorage('data.items',[] as Item[]),
-      options: useLocalStorage('data.options',{} as Options),
-      entrances: useLocalStorage('data.entrances',[] as Entrance[]),
-      seed: useLocalStorage('data.seed',""),
+      locations: useLocalStorage("data.locations", [] as Location[]),
+      items: useLocalStorage("data.items", [] as Item[]),
+      options: useLocalStorage("data.options", {} as Options),
+      entrances: useLocalStorage("data.entrances", [] as Entrance[]),
+      seed: useLocalStorage("data.seed", ""),
     };
   },
   getters: {

@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
-import { Location } from "@/models/Location";
-import { CATEGORIES, Item, ITEM_IDENTIFIER_TO_NAME } from "@/models/Item";
+import type { Location } from "@/models/Location";
+import { CATEGORIES, type Item, ITEM_IDENTIFIER_TO_NAME } from "@/models/Item";
 import { Options } from "@/models/Options";
-import { Entrance, ENTRANCE_LIST } from "@/models/Entrance";
+import { type Entrance, ENTRANCE_LIST } from "@/models/Entrance";
 import { sortBy } from "lodash";
+import { useLocalStorage } from "@vueuse/core";
 
 export interface JsonData {
   accessibleItems: any[];
@@ -17,11 +18,11 @@ export const useDataStore = defineStore({
   id: "ladxr-data",
   state: () => {
     return {
-      locations: [] as Location[],
-      items: [] as Item[],
-      options: {} as Options,
-      entrances: [] as Entrance[],
-      seed: "",
+      locations: useLocalStorage('data.locations', [] as Location[]),
+      items: useLocalStorage('data.items',[] as Item[]),
+      options: useLocalStorage('data.options',{} as Options),
+      entrances: useLocalStorage('data.entrances',[] as Entrance[]),
+      seed: useLocalStorage('data.seed',""),
     };
   },
   getters: {

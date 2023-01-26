@@ -107,7 +107,7 @@ export const ENTRANCE_LIST = {
   desert_cave: "Desert Cave",
 } as const;
 
-export default interface Entrance {
+export interface Entrance {
   from: typeof ENTRANCE_LIST[keyof typeof ENTRANCE_LIST];
   to: typeof ENTRANCE_LIST[keyof typeof ENTRANCE_LIST];
 }

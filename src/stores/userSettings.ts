@@ -3,15 +3,16 @@ import { useDataStore } from "@/stores/data";
 import type { Location } from "@/models/Location";
 import { VIEW_MODES } from "@/models/Utility";
 import { isNumber, map } from "lodash";
+import { useLocalStorage } from "@vueuse/core";
 
 export const useUserSettingsStore = defineStore({
   id: "ladxr-settings",
   state: () => {
     return {
-      markNonAccessible: false,
-      markSphereItems: false,
+      markNonAccessible: useLocalStorage('userSettings.markNonAccessible', false),
+      markSphereItems: useLocalStorage('userSettings.markSphereItems',false),
       sphere: 0,
-      viewMode: VIEW_MODES.GRAPHIC,
+      viewMode: useLocalStorage('userSettings.viewMode',VIEW_MODES.GRAPHIC),
     };
   },
   getters: {

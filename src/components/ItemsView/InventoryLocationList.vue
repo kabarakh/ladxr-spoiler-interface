@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { Item } from "@/models/Item";
 import { useUserSettingsStore } from "@/stores/userSettings";
+import { useDataStore } from "@/stores/data";
 
 const props = defineProps(["items"]);
 const userSettingsStore = useUserSettingsStore();
+const dataStore = useDataStore();
 
-const locations = props.items.map((item: Item) => item.getLocation());
+const locations = props.items.map((item: Item) => dataStore.getLocationById(item.locationId));
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useUserSettingsStore } from "@/stores/userSettings";
+import { useDataStore } from "@/stores/data";
 
 const props = defineProps(["item"]);
 
@@ -11,6 +12,9 @@ const toggleDisplay = () => {
 };
 
 const userSettingsStore = useUserSettingsStore();
+const dataStore = useDataStore();
+
+const location = dataStore.getLocationById(props.item.locationId);
 </script>
 
 <style lang="scss" scoped>
@@ -32,6 +36,6 @@ div {
       @click="toggleDisplay"
       >{{ item.name }}</span
     >
-    <span v-if="displayLocation">{{ item.getLocation().area }} - {{ item.getLocation().name }}</span>
+    <span v-if="displayLocation">{{ location.area }} - {{ location.name }}</span>
   </div>
 </template>

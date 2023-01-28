@@ -83,13 +83,13 @@ export const useDataStore = defineStore({
     generateStore(jsonData: JsonData) {
       this.reset();
 
-      this.seed = jsonData.seed;
       this.generateOptionsFromJsonObject(jsonData.options);
       this.generateItemsAndLocationsFromJsonObject({
         accessibleItems: jsonData.accessibleItems,
         inaccessibleItems: jsonData.inaccessibleItems,
       });
       this.generateEntrancesFromJsonObject(jsonData.entrances);
+      this.seed = jsonData.seed;
     },
     generateEntrancesFromJsonObject(entrances: any) {
       const entranceList: Entrance[] = [];

@@ -81,6 +81,8 @@ export const useDataStore = defineStore({
       });
     },
     generateStore(jsonData: JsonData) {
+      this.reset();
+
       this.seed = jsonData.seed;
       this.generateOptionsFromJsonObject(jsonData.options);
       this.generateItemsAndLocationsFromJsonObject({

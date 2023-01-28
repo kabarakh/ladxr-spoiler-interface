@@ -1,9 +1,22 @@
 import { defineStore } from "pinia";
 import type { Location } from "@/models/Location";
 import { CATEGORIES, type Item, ITEM_IDENTIFIER_TO_NAME, ITEM_TO_CATEGORY_MAP } from "@/models/Item";
-import { Options } from "@/models/Options";
+import type { Options } from "@/models/Options";
+import {
+  ACCESSIBILITY_RULE,
+  BOOMERANG_GIFT,
+  BOWWOW,
+  DUNGEON_ITEMS,
+  ENTRANCE_SUFFLE,
+  GOALS,
+  ITEMPOOL,
+  LOGIC,
+  OVERWORLD,
+  OWLSTATUES,
+  STEAL,
+} from "@/models/Options";
 import { type Entrance, ENTRANCE_LIST } from "@/models/Entrance";
-import { sortBy } from "lodash";
+import { forEach, sortBy } from "lodash";
 import { useLocalStorage } from "@vueuse/core";
 
 export interface JsonData {
@@ -68,71 +81,75 @@ export const useDataStore = defineStore({
       });
     },
     generateStore(jsonData: JsonData) {
-      const newState = {
-        seed: jsonData.seed,
-        options: new Options(jsonData.options),
-        locations: [] as Location[],
-        items: [] as Item[],
-        entrances: [] as Entrance[],
-      };
-
-      jsonData.accessibleItems.forEach((entry) => {
-        const newLocation: Location = {
-          accessible: true,
-          area: entry.area,
-          sphere: entry.sphere,
-          name: entry.locationName,
-          id: entry.id,
-          itemIdentifier: entry.itemName,
-        };
-        newState.locations.push(newLocation);
-
-        const newItem: Item = {
-          sphere: entry.sphere,
-          identifier: entry.itemName,
-          locationId: entry.id,
-          name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
-          category: ITEM_TO_CATEGORY_MAP[entry.itemName as keyof typeof ITEM_TO_CATEGORY_MAP],
-          accessible: true,
-        };
-        newState.items.push(newItem);
+      this.seed = jsonData.seed;
+      this.generateOptionsFromJsonObject(jsonData.options);
+      this.generateItemsAndLocationsFromJsonObject({
+        accessibleItems: jsonData.accessibleItems,
+        inaccessibleItems: jsonData.inaccessibleItems,
       });
-
-      jsonData.inaccessibleItems.forEach((entry) => {
-        const newLocation: Location = {
-          accessible: false,
-          area: entry.area,
-          sphere: entry.sphere,
-          name: entry.locationName,
-          id: entry.id,
-          itemIdentifier: entry.itemName,
-        };
-        newState.locations.push(newLocation);
-
-        const newItem: Item = {
-          sphere: entry.sphere,
-          category: ITEM_TO_CATEGORY_MAP[entry.itemName as keyof typeof ITEM_TO_CATEGORY_MAP],
-          identifier: entry.itemName,
-          locationId: entry.id,
-          name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
-          accessible: true,
-        };
-        newState.items.push(newItem);
-      });
-
-      for (const entrancesKey in jsonData.entrances) {
-        const newEntrance: Entrance = {
+      this.generateEntrancesFromJsonObject(jsonData.entrances);
+    },
+    generateEntrancesFromJsonObject(entrances: any) {
+      const entranceList: Entrance[] = [];
+      for (const entrancesKey in entrances) {
+        entranceList.push({
           from: ENTRANCE_LIST[entrancesKey as keyof typeof ENTRANCE_LIST],
-          to: ENTRANCE_LIST[jsonData.entrances[entrancesKey] as keyof typeof ENTRANCE_LIST],
-        };
-        newState.entrances.push(newEntrance);
+          to: ENTRANCE_LIST[entrances[entrancesKey] as keyof typeof ENTRANCE_LIST],
+        });
+        this.entrances = entranceList;
       }
+    },
+    generateItemsAndLocationsFromJsonObject(items: { accessibleItems: any, inaccessibleItems: any }) {
+      const itemList: Item[] = [];
+      const locationList: Location[] = [];
 
-      this.seed = newState.seed;
-      this.options = newState.options;
-      this.items = newState.items;
-      this.locations = newState.locations;
-      this.entrances = newState.entrances;
+      forEach(items, (singleItemList: any, type: string) => {
+        singleItemList.forEach((entry: any) => {
+          itemList.push({
+            sphere: entry.sphere,
+            category: ITEM_TO_CATEGORY_MAP[entry.itemName as keyof typeof ITEM_TO_CATEGORY_MAP],
+            identifier: entry.itemName,
+            locationId: entry.id,
+            name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
+            accessible: type === "accessibleItem",
+          });
+
+          locationList.push({
+            accessible: type === "accessibleItem",
+            area: entry.area,
+            sphere: entry.sphere,
+            name: entry.locationName,
+            id: entry.id,
+            itemIdentifier: entry.itemName,
+          });
+        });
+      });
+      this.items = itemList;
+      this.locations = locationList;
+    },
+    generateOptionsFromJsonObject(optionsData: any) {
+      this.options = {
+        logic: LOGIC[optionsData.logic],
+        bowwow: BOWWOW[optionsData.bowwow],
+        goal: GOALS[optionsData.goal],
+        boomerang: BOOMERANG_GIFT[optionsData.boomerang],
+        accessibilityRule: ACCESSIBILITY_RULE[optionsData.accessibility],
+        dungeonItems: DUNGEON_ITEMS[optionsData.dungeon_items],
+        dungeonshuffle: optionsData.dungeonshuffle,
+        entranceshuffle: ENTRANCE_SUFFLE[optionsData.entranceshuffle],
+        heartcontainers: optionsData.heartcontainers,
+        tradequest: optionsData.tradequest,
+        instruments: optionsData.instruments,
+        owlstatues: OWLSTATUES[optionsData.owlstatues],
+        heartpiece: optionsData.heartpiece,
+        seashells: optionsData.seashells,
+        itempool: ITEMPOOL[optionsData.itempool],
+        overworld: OVERWORLD[optionsData.overworld],
+        randomstartlocation: optionsData.randomstartlocation,
+        rooster: optionsData.rooster,
+        steal: STEAL[optionsData.steal],
+        witch: optionsData.witch,
+      };
     },
   },
 });

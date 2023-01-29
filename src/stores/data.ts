@@ -85,8 +85,8 @@ export const useDataStore = defineStore({
 
       this.generateOptionsFromJsonObject(jsonData.options);
       this.generateItemsAndLocationsFromJsonObject({
-        accessibleItems: jsonData.accessibleItems,
-        inaccessibleItems: jsonData.inaccessibleItems,
+        accessible: jsonData.accessibleItems,
+        inaccessible: jsonData.inaccessibleItems,
       });
       this.generateEntrancesFromJsonObject(jsonData.entrances);
       this.seed = jsonData.seed;
@@ -101,11 +101,11 @@ export const useDataStore = defineStore({
         this.entrances = entranceList;
       }
     },
-    generateItemsAndLocationsFromJsonObject(items: { accessibleItems: any, inaccessibleItems: any }) {
+    generateItemsAndLocationsFromJsonObject(items: { accessible: any, inaccessible: any }) {
       const itemList: Item[] = [];
       const locationList: Location[] = [];
-
       forEach(items, (singleItemList: any, type: string) => {
+
         singleItemList.forEach((entry: any) => {
           itemList.push({
             sphere: entry.sphere,
@@ -113,11 +113,11 @@ export const useDataStore = defineStore({
             identifier: entry.itemName,
             locationId: entry.id,
             name: ITEM_IDENTIFIER_TO_NAME[entry.itemName as keyof typeof ITEM_IDENTIFIER_TO_NAME],
-            accessible: type === "accessibleItem",
+            accessible: type === "accessible",
           });
 
           locationList.push({
-            accessible: type === "accessibleItem",
+            accessible: type === "accessible",
             area: entry.area,
             sphere: entry.sphere,
             name: entry.locationName,

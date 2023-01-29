@@ -18,6 +18,7 @@ import {
 import { type Entrance, ENTRANCE_LIST } from "@/models/Entrance";
 import { forEach, sortBy } from "lodash";
 import { useLocalStorage } from "@vueuse/core";
+import {DUNGEON_LIST} from "@/models/Location";
 
 export interface JsonData {
   accessibleItems: any[];
@@ -116,6 +117,15 @@ export const useDataStore = defineStore({
             accessible: type === "accessible",
           });
 
+          let locationType;
+          if (entry.id.charAt(2) === "0") {
+            locationType = "overworld"
+          } else if (DUNGEON_LIST.find((dungeon) => dungeon === entry.area)) {
+            locationType = "dungeon";
+          } else {
+            locationType = "cave";
+          }
+
           locationList.push({
             accessible: type === "accessible",
             area: entry.area,
@@ -123,6 +133,7 @@ export const useDataStore = defineStore({
             name: entry.locationName,
             id: entry.id,
             itemIdentifier: entry.itemName,
+            type: locationType,
           });
         });
       });

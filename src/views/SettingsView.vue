@@ -19,7 +19,7 @@ const options = store.options;
     Seashell shuffle: {{ options.seashells }}<br />
     Trade quest item shuffle: {{ options.tradequest }}<br />
     Instrument shuffle: {{ options.instruments }}<br />
-    Itmes on owl statues: {{ options.owlstatues }}<br />
+    Items on owl statues: {{ options.owlstatues }}<br />
     Dungeon item shuffle: {{ options.dungeonItems }}<br />
     Random starting location: {{ options.randomstartlocation }}<br />
     Dungeon shuffle: {{ options.dungeonshuffle }}<br />

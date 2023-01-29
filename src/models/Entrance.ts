@@ -7,7 +7,7 @@ export const ENTRANCE_LIST = {
   left_taltal_entrance: "Left TalTal Entrance",
   obstacle_cave_entrance: "Obstacle Cave Entrance",
   left_to_right_taltalentrance: "Left to Right TalTal Entrance",
-  obstacle_cave_outside_chest: "Obstacle Cave Outside CHest",
+  obstacle_cave_outside_chest: "Obstacle Cave Outside Chest",
   obstacle_cave_exit: "Obstacle Cave Exit",
   papahl_entrance: "Way to Papahl Entrance",
   papahl_exit: "Way to Papahl Exit",

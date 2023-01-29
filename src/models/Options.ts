@@ -23,7 +23,7 @@ export enum DUNGEON_ITEMS {
     "keysy" = "Doors open",
 }
 
-export enum ENTRANCE_SUFFLE {
+export enum ENTRANCE_SHUFFLE {
     none = "None",
     simple = "Simple",
     advanced = "Advanced",
@@ -98,7 +98,7 @@ export interface Options {
     dungeonItems: DUNGEON_ITEMS,
     randomstartlocation: boolean,
     dungeonshuffle: boolean,
-    entranceshuffle: ENTRANCE_SUFFLE,
+    entranceshuffle: ENTRANCE_SHUFFLE,
     witch: boolean,
     rooster: boolean,
     boomerang: BOOMERANG_GIFT,
